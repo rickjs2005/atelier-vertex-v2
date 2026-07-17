@@ -86,6 +86,11 @@ html[data-scene="stats"] #video-rig video {
   filter: brightness(0.45) saturate(0.85);
 }
 
+/* mesa de luz: o vídeo quase apaga pra planta se desenhar por cima */
+html[data-scene="prancha"] #video-rig video {
+  filter: brightness(0.18) saturate(0.6);
+}
+
 html[data-scene="finale"] #video-rig video {
   filter: brightness(0.7);
 }

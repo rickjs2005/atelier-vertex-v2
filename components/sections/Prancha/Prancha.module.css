@@ -1,0 +1,57 @@
+.prancha {
+  position: relative;
+  height: 240vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  pointer-events: none;
+}
+
+.header {
+  text-shadow: 0 1px 10px rgba(11, 12, 8, 0.8);
+}
+
+.plan {
+  width: min(78vw, 62vh * 1.33, 760px);
+}
+
+.label,
+.medida,
+.carimbo {
+  font-family: var(--font-jet), monospace;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.label {
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  fill: var(--color-concreto);
+}
+
+.medida {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  fill: var(--color-ceu);
+  font-variant-numeric: tabular-nums;
+}
+
+.carimbo {
+  font-size: 7.5px;
+  letter-spacing: 0.2em;
+  fill: rgba(184, 178, 167, 0.55);
+}
+
+@media (max-width: 767px) {
+  .plan {
+    width: 92vw;
+  }
+}

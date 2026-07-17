@@ -4,6 +4,7 @@ import SceneTracker from "@/components/SceneTracker/SceneTracker";
 import Loader from "@/components/Loader/Loader";
 import Nav from "@/components/Nav/Nav";
 import Hero from "@/components/sections/Hero/Hero";
+import Prancha from "@/components/sections/Prancha/Prancha";
 import Film from "@/components/sections/Film/Film";
 import Stats from "@/components/sections/Stats/Stats";
 import Finale from "@/components/sections/Finale/Finale";
@@ -24,6 +25,7 @@ export default function Home() {
       <main className="relative z-10">
         {/* ato 1 — o filme da obra 041 sobre o vídeo fixo */}
         <Hero />
+        <Prancha />
         <Film />
         <Stats />
         <Finale />

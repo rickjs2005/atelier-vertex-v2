@@ -1,0 +1,112 @@
+.obras {
+  position: relative;
+  background: var(--color-breu);
+  padding: clamp(5rem, 14vh, 9rem) clamp(1.25rem, 4vw, 4.5rem);
+}
+
+.header {
+  margin-bottom: clamp(3.5rem, 9vh, 6rem);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5.4vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3.5rem, 9vh, 6rem) 4vw;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* coluna direita desce meio passo — ritmo editorial */
+  .item:nth-child(even) {
+    transform: translateY(clamp(2.5rem, 8vh, 5.5rem));
+  }
+}
+
+.figure {
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #0c0d09;
+  outline: 1px solid color-mix(in srgb, var(--color-cal) 8%, transparent);
+  outline-offset: -1px;
+}
+
+.item:nth-child(even) .frame {
+  aspect-ratio: 4 / 4.6;
+}
+
+.img {
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.figure:hover .img {
+  transform: scale(1.06);
+}
+
+.caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 0.9rem;
+  margin-top: 0.1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-concreto) 18%, transparent);
+}
+
+.captionLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+}
+
+.name {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 115%;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+}
+
+.captionRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .caption {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .captionRight {
+    text-align: left;
+  }
+}

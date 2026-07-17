@@ -2,7 +2,8 @@ import s from "./Nav.module.css";
 
 const LINKS = [
   ["A obra", "#film"],
-  ["Números", "#numeros"],
+  ["Arquivo", "#obras"],
+  ["Estúdio", "#estudio"],
   ["Contato", "#contato"],
 ];
 

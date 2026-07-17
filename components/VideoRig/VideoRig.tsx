@@ -43,6 +43,7 @@ export default function VideoRig() {
       const dur = v.duration;
       if (!dur || v.readyState < 2) return;
       const sc = SCENES[world.scene];
+      if (!sc) return;
       const target = sc.v0 + (sc.v1 - sc.v0) * world.t;
       const next = current + (target - current) * 0.1;
       if (Math.abs(next - current) > 0.0004) {
@@ -79,11 +80,11 @@ export default function VideoRig() {
       {/* vinheta de filme sobre o vídeo, sob o conteúdo */}
       <div className={s.vignette} />
       {/* timecode da obra — vive sobre a tarja do letterbox */}
-      <span ref={day} className={s.day}>
+      <span ref={day} id="dia-hud" className={s.day}>
         dia 001 / 132
       </span>
       {/* linha de cota: a página inteira medida como prancha de obra */}
-      <div className={s.cota}>
+      <div id="cota" className={s.cota}>
         <span ref={fill} className={s.cotaFill} />
         {MARCOS.map((m) => (
           <i key={m} className={s.cotaTick} style={{ left: `${m * 100}%` }} />

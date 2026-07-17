@@ -1,0 +1,71 @@
+.cta {
+  position: relative;
+  background: var(--color-breu);
+  padding: clamp(6rem, 18vh, 11rem) clamp(1.25rem, 4vw, 4.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-concreto) 12%, transparent);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 8vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+}
+
+.copy {
+  max-width: 30rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-concreto);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.6rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 1.9rem;
+  font-family: var(--font-jet), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-breu);
+  background: var(--color-ceu);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--color-cal);
+  transform: translateY(-2px);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-cal);
+  outline: 1px solid color-mix(in srgb, var(--color-cal) 35%, transparent);
+  outline-offset: -1px;
+}
+
+.ghost:hover {
+  background: color-mix(in srgb, var(--color-cal) 12%, transparent);
+  color: var(--color-cal);
+}

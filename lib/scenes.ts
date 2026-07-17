@@ -12,4 +12,5 @@ export const SCENES: Record<SceneName, { v0: number; v1: number }> = {
   "film-3": { v0: 0.62, v1: 0.86 }, // fachada
   stats: { v0: 0.86, v1: 0.93 }, // quase pronto, números por cima
   finale: { v0: 0.93, v1: 1.0 }, // entrega
+  after: { v0: 1.0, v1: 1.0 }, // filme encerrado — conteúdo rola por cima
 };

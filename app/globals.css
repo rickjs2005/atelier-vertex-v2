@@ -90,6 +90,17 @@ html[data-scene="finale"] #video-rig video {
   filter: brightness(0.7);
 }
 
+/* depois do filme, o HUD da obra sai de cena */
+#dia-hud,
+#cota {
+  transition: opacity 0.5s ease;
+}
+
+html[data-scene="after"] #dia-hud,
+html[data-scene="after"] #cota {
+  opacity: 0;
+}
+
 /* rótulo de cena na tarja superior — metadado de filme */
 #letterbox-top::after {
   content: "";

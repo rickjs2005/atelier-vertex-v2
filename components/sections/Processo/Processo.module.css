@@ -1,0 +1,81 @@
+.processo {
+  position: relative;
+  background: var(--color-breu);
+  padding: clamp(5rem, 14vh, 9rem) clamp(1.25rem, 4vw, 4.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--color-concreto) 12%, transparent);
+}
+
+.header {
+  margin-bottom: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(2rem, 4.6vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+  max-width: 52rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etapa {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: baseline;
+  padding: clamp(1.4rem, 3.5vh, 2.2rem) 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-concreto) 16%, transparent);
+}
+
+.numero {
+  font-family: var(--font-jet), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-ceu);
+}
+
+.nome {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 120%;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-cal);
+}
+
+.copy {
+  max-width: 36rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-concreto);
+}
+
+.weeks {
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .etapa {
+    grid-template-columns: auto 1fr;
+  }
+
+  .weeks {
+    grid-column: 2;
+  }
+}

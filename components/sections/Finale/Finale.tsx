@@ -4,7 +4,7 @@ import s from "./Finale.module.css";
 
 export default function Finale() {
   return (
-    <section id="contato" data-scene="finale" className={s.finale}>
+    <section id="entrega" data-scene="finale" className={s.finale}>
       <div className={s.sticky}>
         <div className={s.scrim} />
         <div className={s.inner}>
@@ -18,11 +18,11 @@ export default function Finale() {
               obra pode ser o seu.
             </p>
             <div className={s.actions}>
-              <a className={s.btn} href="mailto:projetos@ateliervertex.com.br">
+              <a className={s.btn} href="#contato">
                 Solicitar um projeto
               </a>
-              <a className={`${s.btn} ${s.ghost}`} href="#">
-                Rever a obra
+              <a className={`${s.btn} ${s.ghost}`} href="#obras">
+                Ver outras obras
               </a>
             </div>
           </Reveal>

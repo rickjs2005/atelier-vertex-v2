@@ -4,7 +4,8 @@ export type SceneName =
   | "film-2"
   | "film-3"
   | "stats"
-  | "finale";
+  | "finale"
+  | "after";
 
 /**
  * Estado mutável compartilhado — o SceneTracker escreve, o VideoRig lê

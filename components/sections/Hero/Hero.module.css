@@ -1,0 +1,158 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(1.25rem, 4vw, 4.5rem);
+}
+
+/* ---------- nav ---------- */
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem clamp(1.25rem, 4vw, 4.5rem);
+}
+
+.logo {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 120%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.links a {
+  font-family: var(--font-jet), monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-concreto);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.links a:hover {
+  color: var(--color-ceu);
+}
+
+/* ---------- grade assimétrica: texto à esquerda, vídeo deslocado à direita ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) min(62vw, 1080px);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+  width: 100%;
+}
+
+.copy {
+  /* o título quebra a grade: pode invadir o respiro, nunca o vídeo */
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  font-size: clamp(2.3rem, 4.2vw, 4.1rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-cal);
+  /* quebra a grade: avança sobre o respiro do gap, nunca sobre o vídeo */
+  width: calc(100% + clamp(2rem, 4vw, 4.5rem));
+}
+
+.titleDias {
+  color: var(--color-ceu);
+}
+
+.dados {
+  margin-top: clamp(1.8rem, 3vw, 3rem);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 8ch 1fr;
+  gap: 1.6rem;
+  align-items: baseline;
+}
+
+.row dd {
+  margin: 0;
+}
+
+/* ---------- o vídeo: container, não fundo ---------- */
+
+.stage {
+  position: relative;
+  margin: 0;
+}
+
+.video,
+.fallback {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1024 / 530;
+  object-fit: cover;
+  background: #0c0d09;
+  outline: 1px solid color-mix(in srgb, var(--color-cal) 10%, transparent);
+  outline-offset: -1px;
+}
+
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  bottom: -2.1rem;
+}
+
+/* ---------- mobile: sem pin, sem scrub — vídeo comum com controles ---------- */
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 5.5rem;
+    padding-bottom: 3rem;
+    align-items: flex-start;
+  }
+
+  .links {
+    gap: 1.1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .title {
+    font-size: clamp(2.4rem, 11.5vw, 3.2rem);
+    width: 100%;
+  }
+
+  .hint {
+    display: none;
+  }
+}

@@ -63,6 +63,8 @@
   /* o título quebra a grade: pode invadir o respiro, nunca o vídeo */
   position: relative;
   z-index: 1;
+  /* vira container: as palavras da narrativa se medem pela coluna */
+  container-type: inline-size;
 }
 
 .title {
@@ -99,9 +101,42 @@
   margin: 0;
 }
 
+/* ---------- narrativa do scrub ---------- */
+
+.etapas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.etapa {
+  position: absolute;
+  left: 0;
+  top: 34%;
+  opacity: 0;
+}
+
+.etapaWord {
+  font-family: var(--font-archivo), sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  /* 8cqw: "TRANSFORMAÇÃO." (14ch ≈ 12.2em) ocupa ~97% da coluna, nunca o vídeo */
+  font-size: clamp(1.4rem, 8cqw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-cal);
+}
+
+.etapaMeta {
+  display: block;
+  margin-top: 1rem;
+}
+
 /* ---------- o vídeo: container, não fundo ---------- */
 
-.stage {
+.videoBox {
   position: relative;
   margin: 0;
 }
@@ -123,10 +158,29 @@
   justify-content: center;
 }
 
-.hint {
+.caption {
   position: absolute;
   left: 0;
+  right: 0;
   bottom: -2.1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.hint {
+  font-style: normal;
+}
+
+.dia {
+  font-family: var(--font-jet), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-concreto);
+  opacity: 0;
 }
 
 /* ---------- mobile: sem pin, sem scrub — vídeo comum com controles ---------- */
@@ -152,7 +206,8 @@
     width: 100%;
   }
 
-  .hint {
+  .caption,
+  .etapas {
     display: none;
   }
 }

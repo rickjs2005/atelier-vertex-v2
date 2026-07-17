@@ -20,6 +20,13 @@
 }
 
 :root {
+  /* altura reservada do nav fixo — todo bloco do Ato 1 que centraliza
+     conteúdo verticalmente soma isso ao padding-top, senão título alto
+     nasce sob o logo (achado do parecer de design, seção 04) */
+  --nav-h: clamp(4.5rem, 11vh, 6rem);
+}
+
+:root {
   color-scheme: dark;
 }
 
@@ -45,6 +52,15 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-ceu);
   outline-offset: 3px;
+}
+
+/* cursor customizado só em ponteiros finos */
+@media (hover: hover) and (pointer: fine) {
+  html.av-cursor,
+  html.av-cursor a,
+  html.av-cursor button {
+    cursor: none;
+  }
 }
 
 /* ==========================================================================
@@ -97,12 +113,34 @@ html[data-scene="finale"] #video-rig video {
 
 /* depois do filme, o HUD da obra sai de cena */
 #dia-hud,
-#cota {
+#cota,
+#film-progress {
   transition: opacity 0.5s ease;
 }
 
 html[data-scene="after"] #dia-hud,
-html[data-scene="after"] #cota {
+html[data-scene="after"] #cota,
+html[data-scene="after"] #film-progress {
+  opacity: 0;
+}
+
+/* o vídeo se apaga suavemente entrando no Ato 2 — evita o corte seco
+   de "filme" pra "portfólio estático" (achado do parecer, seção 03/12) */
+#video-rig {
+  transition: opacity 1.1s ease;
+}
+
+html[data-scene="after"] #video-rig {
+  opacity: 0;
+}
+
+/* grão de filme só faz sentido durante o filme — no Ato 2 (arquivo,
+   estúdio, processo, contato) é editorial impresso, não cinema */
+body::after {
+  transition: opacity 0.6s ease;
+}
+
+html[data-scene="after"] body::after {
   opacity: 0;
 }
 

@@ -14,15 +14,12 @@ export default function Finale() {
             </p>
             <h2 className={s.title}>Entregue.</h2>
             <p className={s.copy}>
-              Do andaime à fachada sem um dia de atraso. O próximo registro de
-              obra pode ser o seu.
+              Do andaime à fachada sem um dia de atraso. Esta é uma entre 41
+              obras do estúdio — o arquivo completo está logo abaixo.
             </p>
             <div className={s.actions}>
-              <a className={s.btn} href="#contato">
-                Solicitar um projeto
-              </a>
               <a className={`${s.btn} ${s.ghost}`} href="#obras">
-                Ver outras obras
+                Ver o arquivo ↓
               </a>
             </div>
           </Reveal>

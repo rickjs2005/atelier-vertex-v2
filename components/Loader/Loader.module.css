@@ -53,3 +53,24 @@
   text-transform: uppercase;
   color: color-mix(in srgb, var(--color-concreto) 55%, transparent);
 }
+
+.skip {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.25rem, 4vw, 3rem);
+  font-family: var(--font-jet), monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-concreto) 60%, transparent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.25s ease;
+}
+
+.skip:hover,
+.skip:focus-visible {
+  color: var(--color-ceu);
+}

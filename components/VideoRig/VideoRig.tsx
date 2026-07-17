@@ -12,7 +12,7 @@ import s from "./VideoRig.module.css";
  * cenas. Requer vídeo GOP 1 (todo frame keyframe, ver README).
  */
 // marcos da linha de cota (frações do vídeo onde cada fase começa)
-const MARCOS = [0.05, 0.34, 0.62, 0.86, 0.93];
+const MARCOS = [0.06, 0.3, 0.5, 0.9, 0.95];
 
 export default function VideoRig() {
   const video = useRef<HTMLVideoElement>(null);
@@ -74,7 +74,10 @@ export default function VideoRig() {
         className={s.video}
         muted
         playsInline
-        preload="auto"
+        // metadata, não auto: o navegador não baixa os 7–10MB inteiros
+        // de cara — busca sob demanda conforme o scrub pede trechos
+        // (achado do parecer de design, seção 09/12)
+        preload="metadata"
         poster="/video/poster.jpg"
       />
       {/* vinheta de filme sobre o vídeo, sob o conteúdo */}

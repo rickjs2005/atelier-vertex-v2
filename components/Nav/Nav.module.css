@@ -8,6 +8,28 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem clamp(1.25rem, 4vw, 4.5rem);
+  /* opaco de verdade na própria caixa do nav — um gradiente que
+     esmaece DENTRO da faixa do nav ainda deixa título passando por
+     baixo ilegível durante o scroll contínuo (achado do parecer,
+     seção 04). A transição suave pro vídeo vive no ::after, fora
+     da caixa que precisa ser sólida. */
+  background: color-mix(in srgb, var(--color-breu) 94%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 4rem;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-breu) 55%, transparent),
+    transparent
+  );
 }
 
 .logo {
@@ -19,7 +41,7 @@
   text-transform: uppercase;
   color: var(--color-cal);
   text-decoration: none;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
 }
 
 .links {
@@ -34,7 +56,6 @@
   text-transform: uppercase;
   color: var(--color-cal);
   text-decoration: none;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
   transition: color 0.25s ease;
 }
 
@@ -42,8 +63,106 @@
   color: var(--color-ceu);
 }
 
+.burger {
+  display: none;
+}
+
+.panel {
+  display: none;
+}
+
+/* ---------- mobile: hambúrguer + painel fullscreen ---------- */
+
 @media (max-width: 767px) {
   .links {
-    gap: 1.1rem;
+    display: none;
+  }
+
+  .burger {
+    position: relative;
+    z-index: 41;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 6px;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--color-cal);
+    transition:
+      transform 0.35s cubic-bezier(0.65, 0, 0.35, 1),
+      opacity 0.35s ease,
+      width 0.35s ease;
+  }
+
+  .navOpen .burger span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+    width: 22px;
+  }
+
+  .navOpen .burger span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+    width: 22px;
+  }
+
+  .panel {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: var(--color-breu);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s ease,
+      visibility 0s linear 0.4s;
+  }
+
+  .panelOpen {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.4s ease,
+      visibility 0s linear;
+  }
+
+  .panelLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+  }
+
+  .panelLinks a {
+    font-family: var(--font-archivo), sans-serif;
+    font-stretch: 120%;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--color-cal);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .panelOpen .panelLinks a {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

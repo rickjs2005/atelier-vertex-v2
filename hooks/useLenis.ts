@@ -19,9 +19,14 @@ export function useLenis() {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
+    // exposto pro link "pular pro arquivo" do loader — scrollIntoView
+    // nativo desincroniza do Lenis, scrollTo da instância não
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     return () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
     };
   }, []);
 }

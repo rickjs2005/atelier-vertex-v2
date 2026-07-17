@@ -18,11 +18,16 @@ export default function Cta() {
           estudo de viabilidade, cronograma e orçamento executivo.
         </p>
         <div className={s.actions}>
-          <a className={s.btn} href="mailto:projetos@ateliervertex.com.br">
-            projetos@ateliervertex.com.br
+          <a
+            className={s.btn}
+            href="https://wa.me/5511940028922?text=Quero%20solicitar%20um%20projeto%20com%20o%20Atelier%20Vertex"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Falar no WhatsApp
           </a>
-          <a className={`${s.btn} ${s.ghost}`} href="#obras">
-            Rever o arquivo
+          <a className={`${s.btn} ${s.ghost}`} href="mailto:projetos@ateliervertex.com.br">
+            projetos@ateliervertex.com.br
           </a>
         </div>
       </Reveal>

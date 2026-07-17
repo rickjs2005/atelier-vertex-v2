@@ -11,13 +11,21 @@ import s from "./VideoRig.module.css";
  * o prédio se constrói e desconstrói conforme o scroll atravessa as
  * cenas. Requer vídeo GOP 1 (todo frame keyframe, ver README).
  */
+// marcos da linha de cota (frações do vídeo onde cada fase começa)
+const MARCOS = [0.05, 0.34, 0.62, 0.86, 0.93];
+
 export default function VideoRig() {
   const video = useRef<HTMLVideoElement>(null);
   const day = useRef<HTMLSpanElement>(null);
+  const fill = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const v = video.current;
     if (!v) return;
+    // fonte por viewport: HD no desktop, leve no mobile (src fora do JSX
+    // pra não baixar as duas)
+    v.src = window.innerWidth > 1100 ? "/video/hero-hd.mp4" : "/video/hero.mp4";
+    v.load();
     v.pause();
 
     const ready = () => window.dispatchEvent(new CustomEvent("av:ready"));
@@ -46,6 +54,9 @@ export default function VideoRig() {
         const txt = `dia ${String(1 + Math.round(current * 131)).padStart(3, "0")} / 132`;
         if (day.current.textContent !== txt) day.current.textContent = txt;
       }
+      if (fill.current) {
+        fill.current.style.transform = `scaleX(${current})`;
+      }
     };
     rafId = requestAnimationFrame(tick);
 
@@ -64,13 +75,20 @@ export default function VideoRig() {
         playsInline
         preload="auto"
         poster="/video/poster.jpg"
-      >
-        <source src="/video/hero.mp4" type="video/mp4" />
-      </video>
+      />
+      {/* vinheta de filme sobre o vídeo, sob o conteúdo */}
+      <div className={s.vignette} />
       {/* timecode da obra — vive sobre a tarja do letterbox */}
       <span ref={day} className={s.day}>
         dia 001 / 132
       </span>
+      {/* linha de cota: a página inteira medida como prancha de obra */}
+      <div className={s.cota}>
+        <span ref={fill} className={s.cotaFill} />
+        {MARCOS.map((m) => (
+          <i key={m} className={s.cotaTick} style={{ left: `${m * 100}%` }} />
+        ))}
+      </div>
     </div>
   );
 }

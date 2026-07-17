@@ -11,6 +11,17 @@
   object-position: center;
 }
 
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 45%,
+    transparent 55%,
+    rgba(11, 12, 8, 0.38)
+  );
+}
+
 .day {
   position: fixed;
   right: clamp(1.25rem, 4vw, 4.5rem);
@@ -24,4 +35,32 @@
   font-variant-numeric: tabular-nums;
   color: var(--color-cal);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- linha de cota: régua da obra na base da tela ---------- */
+
+.cota {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 40;
+  background: color-mix(in srgb, var(--color-concreto) 22%, transparent);
+}
+
+.cotaFill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--color-ceu);
+}
+
+.cotaTick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 8px;
+  background: color-mix(in srgb, var(--color-cal) 45%, transparent);
 }

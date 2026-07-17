@@ -11,6 +11,7 @@ import s from "./Hero.module.css";
  */
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const content = useRef<HTMLDivElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -35,9 +36,24 @@ export default function Hero() {
     window.addEventListener("av:intro-done", play);
     const fallback = window.setTimeout(play, 4500);
 
+    // o cartão de abertura se dissolve enquanto a obra começa a andar
+    const exit = gsap.to(content.current, {
+      opacity: 0,
+      y: -70,
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: "top top",
+        end: "72% bottom",
+        scrub: true,
+      },
+    });
+
     return () => {
       window.removeEventListener("av:intro-done", play);
       window.clearTimeout(fallback);
+      exit.scrollTrigger?.kill();
+      exit.kill();
       tl?.kill();
       split.revert();
     };
@@ -47,7 +63,7 @@ export default function Hero() {
     <section ref={root} data-scene="hero" className={s.hero}>
       <div className={s.sticky}>
         <div className={s.scrim} />
-        <div className={s.content}>
+        <div ref={content} className={s.content}>
           <h1 ref={title} className={s.title}>
             Do andaime
             <br />à fachada.

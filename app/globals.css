@@ -89,3 +89,46 @@ html[data-scene="stats"] #video-rig video {
 html[data-scene="finale"] #video-rig video {
   filter: brightness(0.7);
 }
+
+/* rótulo de cena na tarja superior — metadado de filme */
+#letterbox-top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-jet), monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-concreto) 75%, transparent);
+  opacity: 0;
+  transition: opacity 0.45s ease 0.25s;
+  white-space: nowrap;
+}
+
+html[data-scene="film-1"] #letterbox-top::after {
+  content: "cena 01 · estrutura";
+  opacity: 1;
+}
+
+html[data-scene="film-2"] #letterbox-top::after {
+  content: "cena 02 · vedação";
+  opacity: 1;
+}
+
+html[data-scene="film-3"] #letterbox-top::after {
+  content: "cena 03 · fachada";
+  opacity: 1;
+}
+
+/* grão de filme — estático, sutil, sobre tudo menos letterbox/loader */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 25;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='280' height='280' filter='url(%23n)'/%3E%3C/svg%3E");
+}

@@ -46,3 +46,46 @@ body {
   outline: 2px solid var(--color-ceu);
   outline-offset: 3px;
 }
+
+/* ==========================================================================
+   Linguagem de cinema — letterbox e tratamento do vídeo por cena.
+   Vive aqui (não em module) porque reage a <html data-scene>.
+   ========================================================================== */
+
+#letterbox-top,
+#letterbox-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: #0b0c08;
+  z-index: 30;
+  pointer-events: none;
+  transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#letterbox-top {
+  top: 0;
+}
+
+#letterbox-bottom {
+  bottom: 0;
+}
+
+html[data-scene^="film"] #letterbox-top,
+html[data-scene^="film"] #letterbox-bottom {
+  height: 7vh;
+}
+
+#video-rig video {
+  transition: filter 0.8s ease;
+}
+
+/* números e entrega pedem fundo mais calmo — escurece, nunca véu claro */
+html[data-scene="stats"] #video-rig video {
+  filter: brightness(0.45) saturate(0.85);
+}
+
+html[data-scene="finale"] #video-rig video {
+  filter: brightness(0.7);
+}

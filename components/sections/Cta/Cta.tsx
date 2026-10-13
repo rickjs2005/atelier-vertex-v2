@@ -20,14 +20,14 @@ export default function Cta() {
         <div className={s.actions}>
           <a
             className={s.btn}
-            href="https://wa.me/5511940028922?text=Quero%20solicitar%20um%20projeto%20com%20o%20Atelier%20Vertex"
+            href="https://wa.me/5511000000000?text=Quero%20solicitar%20um%20projeto%20com%20o%20Atelier%20Vertex"
             target="_blank"
             rel="noreferrer"
           >
             Falar no WhatsApp
           </a>
-          <a className={`${s.btn} ${s.ghost}`} href="mailto:projetos@ateliervertex.com.br">
-            projetos@ateliervertex.com.br
+          <a className={`${s.btn} ${s.ghost}`} href="mailto:projetos@ateliervertex.example">
+            projetos@ateliervertex.example
           </a>
         </div>
       </Reveal>
